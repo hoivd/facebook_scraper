@@ -1,370 +1,270 @@
 {
-    "total_comment": 142,
-    "total_parent_comment": 85,
+    "total_comment": 150,
+    "total_parent_comment": 88,
     "comments": [
         {
             "text": "Chi tiết tại đây",
-            "image": {
-                "uri": "https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/505422332_1028688709446231_611815746449898013_n.jpg?stp=cp6_dst-jpg_s261x260_tt6&_nc_cat=105&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=5QFOHyCpKw4Q7kNvwF9sAfk&_nc_oc=AdngjVKolOVA9R7akbwSgmgdSyaWSJMdEN77tRLqB8bSCsyiGpGvUpfr8or7Ax0Yiwc&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=FpjE3w7Kl_eW5Yvax3eLww&oh=00_AfPAsgeV0N8rg70svqdlLiLxVk75NCHXY344Deyeoo9KuA&oe=684C3ADF",
-                "width": 261,
-                "height": 163
+            "image": "data\\image\\505422332_1028688709446231_611815746449898013_n.jpg",
+            "reactions": {
+                "total": 3,
+                "detail": {
+                    "like": 3
+                }
             }
         },
         {
             "text": "Hy vọng mình được cứu🥺",
-            "image": null
-        },
-        {
-            "text": "Hiện tỷ lệ utv ở Vietnam rất cao. Mong la có thuốc đặc trị thì tốt. Chứ vacxin cũng chỉ phòng tránh được phần nào.",
-            "image": null
-        },
-        {
-            "text": "U não nữa nha. Tui sắp tèo rồi. Nhanh đi tui còn đợi",
-            "image": null
-        },
-        {
-            "text": "Ship cho mình 10 thùng nha shop! Mình nghiện quá! 😤",
-            "image": null
-        },
-        {
-            "text": "tuyệt vời",
-            "image": null
-        },
-        {
-            "text": "Mấy đứa unti vacxin nó chưa ùa vào à",
-            "image": null
-        },
-        {
-            "text": "Có chưa. Chứ ngày mô củng sợ hết",
-            "image": null
-        },
-        {
-            "text": "chích cái gì\nbị cái đó 😌😌😌",
-            "image": null
-        },
-        {
-            "text": "Có thuốc trị Overthinking 😴 không dạ 🥲",
-            "image": null
-        },
-        {
-            "text": "👏 chúc mừng  tin tốt 🎉",
-            "image": null
-        },
-        {
-            "text": "Hoàng Quyên có sớm hơn thì ..🥲",
-            "image": null
-        },
-        {
-            "text": "Đến bao giờ Việt Nam mình mới có thuốc này",
-            "image": null
-        },
-        {
-            "text": "Tuyệt vời quá",
-            "image": null
-        },
-        {
-            "text": "Chị tôi đã k đợi đc đến lúc này rồi 😢",
-            "image": null
-        },
-        {
-            "text": "Làm 2 mũi là khỏi ngay 🐧",
-            "image": null
-        },
-        {
-            "text": "Đã có chưa",
-            "image": null
-        },
-        {
-            "text": "Hy vọng mau có để em không phải sống trong nỗi sợ",
-            "image": null
-        },
-        {
-            "text": "Thanh Xuân  khi nào tới đây để cứu đc nhiêù ng nhỉ",
-            "image": null
-        },
-        {
-            "text": "trùi ôi tin vui, hy vọng nhiều người được cứu chữa",
-            "image": null
-        },
-        {
-            "text": "Tuyệt vời",
-            "image": null
-        },
-        {
-            "text": "Hi vọng mẹ được cứu❤️",
-            "image": null
-        },
-        {
-            "text": "Mong chờ có thêm các loại khác nữa",
-            "image": null
-        },
-        {
-            "text": "tuyệt vời ạ❤️",
-            "image": null
-        },
-        {
-            "text": "Quá tuyệt",
-            "image": null
-        },
-        {
-            "text": "❤️",
-            "image": null
-        },
-        {
-            "text": "Loan Lê",
-            "image": null
-        },
-        {
-            "text": "Diep Thoa",
-            "image": null
-        },
-        {
-            "text": "Trà Lê",
-            "image": null
-        },
-        {
-            "text": "Mong có loại thuốc tiêu diệt toàn bộ các loại UT thì tốt biết mấy",
-            "image": null
-        },
-        {
-            "text": "Tuyệt vời thế",
-            "image": null
-        },
-        {
-            "text": "Hy vọng thành công. Bệnh ung thư thế giới bó tay :( bệnh hiv thế giới các nhà khoa học cũng chưa tìm ra vaccin chữa khỏi hẳn",
-            "image": null
-        },
-        {
-            "text": "Tầm chục năm nữa là vừa :))",
-            "image": null
-        },
-        {
-            "text": "Nỗi sợ lớn nhất của các chị em \nChúc mừng các chị em",
-            "image": null
-        },
-        {
-            "text": "Hy vọng tương lai sẽ có thuốc chữa k phổi với k gan",
-            "image": null
-        },
-        {
-            "text": "có chưa",
-            "image": null
-        },
-        {
-            "text": "Tuyệt vời",
-            "image": null
-        },
-        {
-            "text": "Mẹ ơi .giá như sớm hơn chút nữa mẹ nhỉ .8 năm rồi .",
-            "image": null
-        },
-        {
-            "text": "Mình luôn cầu mong điều này. Mong vacxin tiếp cận được với cả những người dân khó khăn nhất.",
-            "image": null
-        },
-        {
-            "text": "Tuyệt zờiiiii",
-            "image": null
-        },
-        {
-            "text": "hi vọng thành công,sẽ cứu sống được rất nhiều người luôn,",
-            "image": null
-        },
-        {
-            "text": "Bh về Việt Nam! Ạ",
-            "image": null
-        },
-        {
-            "text": "Để đi tiêm 1 thể cho chị Hương vừa lòng 😀",
-            "image": null
-        },
-        {
-            "text": "Hy vọng",
-            "image": null
-        },
-        {
-            "text": "Quá tuyệt vời",
-            "image": null
-        },
-        {
-            "text": "Thương dân quá",
-            "image": null
-        },
-        {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.1997-6/499523493_1265348712265144_6176114648837159411_n.webp?stp=cp0_dst-webp&_nc_cat=108&ccb=1-7&_nc_sid=72b077&_nc_ohc=m8RmNzPD614Q7kNvwGYifMg&_nc_oc=Adk4nSj4rbGniYi_yt7RmnSBndYEto6JYcA2WYfVL9_raPXiV9-5U29sYpydROpVsj0&_nc_zt=26&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=WSe6tKcMu1NgCusiydhwEw&oh=00_AfOO-ioz3x-pIqGaEhPRU96dqwhh0n4xlvZtFiWIzqKTjg&oe=684C36A6",
-                "width": 80,
-                "height": 80
+            "image": null,
+            "reactions": {
+                "total": 42,
+                "detail": {
+                    "love": 19,
+                    "like": 13,
+                    "support": 9,
+                    "haha": 1
+                }
             }
         },
         {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.1997-6/69181100_2523893221218911_3799802578028462080_n.png?stp=cp0_dst-png_s110x80&_nc_cat=1&ccb=1-7&_nc_sid=23dd7b&_nc_ohc=M_8z70qDnxIQ7kNvwFGIDAG&_nc_oc=AdkVXH-aKdZo2feqeh0dh8LjFlF4f0dxvmOFq29PJrnpPv4fdp1i6Fa0vprlQ2XUpk0&_nc_zt=26&_nc_ht=scontent.fsgn5-2.fna&_nc_gid=WSe6tKcMu1NgCusiydhwEw&oh=00_AfMT1AB8o23mzPraAXG27pVR6_8vh7dnOwEKtBzNPonIlQ&oe=684C432A",
-                "width": 80,
-                "height": 80
+            "text": "U não nữa nha. Tui sắp tèo rồi. Nhanh đi tui còn đợi",
+            "image": null,
+            "reactions": {
+                "total": 17,
+                "detail": {
+                    "support": 10,
+                    "love": 4,
+                    "like": 2,
+                    "sorry": 1
+                }
+            }
+        },
+        {
+            "text": "Hiện tỷ lệ utv ở Vietnam rất cao. Mong la có thuốc đặc trị thì tốt. Chứ vacxin cũng chỉ phòng tránh được phần nào.",
+            "image": null,
+            "reactions": {
+                "total": 10,
+                "detail": {
+                    "like": 8,
+                    "haha": 2
+                }
+            }
+        },
+        {
+            "text": "Ship cho mình 10 thùng nha shop! Mình nghiện quá! 😤",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "haha": 1
+                }
+            }
+        },
+        {
+            "text": "Có chưa. Chứ ngày mô củng sợ hết",
+            "image": null,
+            "reactions": {
+                "total": 2,
+                "detail": {
+                    "haha": 1,
+                    "wow": 1
+                }
+            }
+        },
+        {
+            "text": "Mình đã nghĩ đến điều này khoảng 4 năm trước. Ước gì…",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Hi vọng mẹ được cứu❤️",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "support": 1
+                }
+            }
+        },
+        {
+            "text": "Tuyệt vời",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "like": 1
+                }
+            }
+        },
+        {
+            "text": "Đến bao giờ Việt Nam mình mới có thuốc này",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "like": 1
+                }
+            }
+        },
+        {
+            "text": "Hy vọng mau có để em không phải sống trong nỗi sợ",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Mong chờ có thêm các loại khác nữa",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Làm 2 mũi là khỏi ngay 🐧",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "haha": 1
+                }
+            }
+        },
+        {
+            "text": "tuyệt vời ạ❤️",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "haha": 1
+                }
+            }
+        },
+        {
+            "text": "Chị tôi đã k đợi đc đến lúc này rồi 😢",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "sorry": 1
+                }
+            }
+        },
+        {
+            "text": "Quá tuyệt",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "haha": 1
+                }
+            }
+        },
+        {
+            "text": "❤️",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Hy vọng tương lai sẽ có thuốc chữa k phổi với k gan",
+            "image": null,
+            "reactions": {
+                "total": 2,
+                "detail": {
+                    "like": 2
+                }
+            }
+        },
+        {
+            "text": "hi vọng thành công,sẽ cứu sống được rất nhiều người luôn,",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Tầm chục năm nữa là vừa :))",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Mình luôn cầu mong điều này. Mong vacxin tiếp cận được với cả những người dân khó khăn nhất.",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Hy vọng thành công. Bệnh ung thư thế giới bó tay :( bệnh hiv thế giới các nhà khoa học cũng chưa tìm ra vaccin chữa khỏi hẳn",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "haha": 1
+                }
+            }
+        },
+        {
+            "text": "Mẹ ơi .giá như sớm hơn chút nữa mẹ nhỉ .8 năm rồi .",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Để đi tiêm 1 thể cho chị Hương vừa lòng 😀",
+            "image": null,
+            "reactions": {
+                "total": 1,
+                "detail": {
+                    "haha": 1
+                }
+            }
+        },
+        {
+            "text": "Thương dân quá",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
+        },
+        {
+            "text": "Quá tuyệt vời",
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
             }
         },
         {
             "text": "đỉnh",
-            "image": null
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
+            }
         },
         {
             "text": "Hôm trc là hiv, này là ut vú.",
-            "image": null
-        },
-        {
-            "text": "Chúc mừng",
-            "image": null
-        },
-        {
-            "text": "𝘉𝐴̣𝘕 𝘊𝑂́ 1 𝐶𝘜𝑂̣̂𝘊 𝘏𝐸̣𝘕 𝘛𝐴̣𝘐  𝗞𝗜𝗡𝗚 𝗕𝗘𝗘𝗥 𝟴𝟱 🥳\n 𝘟𝘪𝘯 𝑘𝑖́𝑛ℎ 𝘤𝘩𝘶́𝘤 𝘣𝘢̣𝘯 & 𝘨𝘪𝘢 đ𝘪̀𝘯𝘩 𝘤𝘰́ 𝘮𝘰̣̂𝘵 𝘣𝘶𝘰̂̉𝘪 𝘵𝘰̂́𝘪 cuối tuần 𝘷𝘶𝘪 𝘷𝘦̉ 𝘮𝘢𝘺 𝑚𝑎̆́𝑛 ,#𝐊I𝐍G𝐁E𝐄R8𝟓 𝘛𝘳𝘢̂𝘯 𝘵𝘳𝘰̣𝘯𝘨 𝘬𝘪́𝘯𝘩 𝘮𝘰̛̀𝘪 𝘣𝘢̣𝘯 ,𝑔𝑢̛̉𝑖 𝑡𝑎̣̆𝑛𝑔 đ𝑒̂́𝑛 𝑏𝑎̣𝑛 10 𝐿𝑂𝑁 𝐵𝐼𝐴 𝑘ℎ𝑖 đ𝑒̂́𝑛 𝑐ℎ𝑜̛𝑖 𝘵𝘰̂́𝘪 𝘩𝘰̂𝘮 𝘯𝘢𝘺  Chủ Nhật ngày 8/06/2025 áp   𝑑𝑢̣𝑛𝑔 𝑡𝑟𝑢̛𝑜̛́𝑐 22ℎ 𝑐ℎ𝑜 𝑏𝑎̣𝑛 𝑘ℎ𝑖 đ𝑒̂́𝑛 𝑣𝑎̀ đ𝑎̣̆𝑡 𝑏𝑎̀𝑛 𝑡𝑎̣𝑖 𝗞𝗶𝗻𝗴𝗕𝗲𝗲𝗿 𝟴𝟱 , 𝘳𝘢̂́𝘵 𝘮𝘰𝘯𝘨 𝘤𝘰́ 𝘴𝘶̛̣ 𝘨𝘰́𝘱 𝘮𝘢̣̆𝘵 𝘤𝘶̉𝘢 𝘣𝘢̣𝘯 𝘤𝘶̀𝘯𝘨 𝘯𝘩𝘶̛̃𝘯𝘨 𝘯𝘨𝘶𝘰̛̀𝘪 𝘣𝘢̣𝘯 đ𝘦̂́𝘯 𝘷𝘰̛́𝘪 𝘤𝘩𝘶̛𝘰̛𝘯𝘨 𝘵𝘳𝘪̀𝘯𝘩 .\nCall me: 0967835262 An\n𝙏𝙖̣𝙞 Đ𝙞̣𝙖 𝘾𝙝𝙞̉ :333 𝙋𝙝𝙖̣𝙢 𝙑𝙖̆𝙣 Đ𝙤̂̀𝙣𝙜 𝙌𝙪𝙖̣̂𝙣 𝙂𝙤̀ 𝙑𝙖̂́𝙥 𝙏𝙋𝙃𝘾𝙈 , 𝐗𝐢𝐧 𝐓𝐫𝐚̂𝐧 𝐓𝐫𝐨̣𝐧𝐠 𝐊𝐢́𝐧𝐡 𝐌𝐨̛̀𝐢",
-            "image": {
-                "uri": "https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/505374457_2620477251489289_207096063072631433_n.jpg?stp=dst-jpg_s261x260_tt6&_nc_cat=106&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=ctWuMPsH7x8Q7kNvwFwJOEm&_nc_oc=AdmR1XwPXzauTBPFs3ClwEtZLcjnvM5z3AzPe9e6hvriIxBYnGMms9yzH4wCoTEo35E&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=oGHVgJcUaYBbH4VHAQjIew&oh=00_AfNlJpHaHw_2-MwJ4MiFOE_c9ZlATUsXUYJFpQ8kXEwMuA&oe=684C31A9",
-                "width": 261,
-                "height": 169
+            "image": null,
+            "reactions": {
+                "total": 0,
+                "detail": {}
             }
-        },
-        {
-            "text": "Ê. Tau đếu tin vacx ngừa được bệnh mà tau biết sự thật thì vx là thuốc độc duyệt chủng loài người nha đám truyền thông nhớp. Tụi bây bịp cừu hoài vậy 😡😡😡✂️💥",
-            "image": null
-        },
-        {
-            "text": "Tuyệt vời quá",
-            "image": null
-        },
-        {
-            "text": "Hương Quế",
-            "image": null
-        },
-        {
-            "text": "Tan Duong Thi Minh",
-            "image": null
-        },
-        {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/505378352_996904882604959_7117376140319438676_n.jpg?stp=dst-jpg_p130x130_tt6&_nc_cat=102&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=td2OywLi4MMQ7kNvwHrUCLi&_nc_oc=AdmQSIuIbxd3lUNJ8OZGsuS_Tu52gcKysvGtOEKp5AujczwTfmPe65ERps6jPPUcyf4&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=oGHVgJcUaYBbH4VHAQjIew&oh=00_AfP3KHFaYVMmRdIpngICSwPm2yAexJ9qN5qAAWdhU9oDSA&oe=684C1CFF",
-                "width": 130,
-                "height": 214
-            }
-        },
-        {
-            "text": "Cu Ba Ngọc Anh Thục Nguyễn Phạm Khánh Toàn Lê Nguyễn Diệu Sương Vũ Phong",
-            "image": null
-        },
-        {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/505415836_122113941956881424_793914935762598431_n.jpg?stp=dst-jpg_p75x225_tt6&_nc_cat=103&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=D2FQS1HNQZMQ7kNvwFQ4Edz&_nc_oc=AdkpbmE6TpZNSYa3arWIcaa5dSW01WQrKLT8EGSdDq2Rbs-6NW4LoJ318NoR94MdgTU&_nc_zt=23&_nc_ht=scontent.fsgn5-12.fna&_nc_gid=oGHVgJcUaYBbH4VHAQjIew&oh=00_AfMDGPYG_whUfQtSGIPzhQrQwWfqWibdcOLYPhL2leaK2Q&oe=684C291C",
-                "width": 109,
-                "height": 225
-            }
-        },
-        {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/504428922_708731835191893_3676349866233455491_n.jpg?stp=dst-jpg_s261x260_tt6&_nc_cat=109&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=lPj6pKhgJCAQ7kNvwHw9O5n&_nc_oc=Admv5jcCRGSFjJY4PKurnWEZIzDCwyMlB6dGAtlgt3y1Sl1G_zg_n01FVZFLFuOKclo&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&_nc_gid=oGHVgJcUaYBbH4VHAQjIew&oh=00_AfOwSCOSYWv7doLkUaf4Z2u2cAOtBx13GvDzV40aGvptqA&oe=684C351F",
-                "width": 261,
-                "height": 141
-            }
-        },
-        {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/505430620_708731778525232_834464805885197273_n.jpg?stp=dst-jpg_s261x260_tt6&_nc_cat=102&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=HoWpwSjUiXAQ7kNvwHz6vsd&_nc_oc=AdnvQBjat91QJeJHxxm4E1Lf9I_WZov5lbvluGIiKxKhp6mGFQEg-AuLhK2dYhFZLD8&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=vja8dH_xxK8LYJWVZOIU6A&oh=00_AfMB3sO6Vp5ddYkMK-iX1DZ4GOmynOXBhAHa88jFndBBLg&oe=684C384C",
-                "width": 261,
-                "height": 141
-            }
-        },
-        {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/501268013_122113941860881424_978646930931596856_n.jpg?stp=dst-jpg_s261x260_tt6&_nc_cat=108&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=vQErtB4ksqgQ7kNvwF_tisF&_nc_oc=AdlxL4m7BNyF3eFkypR_5dojvNFTwC5pcNL7XMuRBF0JM6ywRMdUw-p6qYShNajcIXg&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=vja8dH_xxK8LYJWVZOIU6A&oh=00_AfOnF_Y9gnTcqrni4nO3opxqLmYXipFKV-5QA5ol8LNrVg&oe=684C3875",
-                "width": 261,
-                "height": 215
-            }
-        },
-        {
-            "text": "ThuHồng Nguyên này em",
-            "image": null
-        },
-        {
-            "text": "Ngu",
-            "image": null
-        },
-        {
-            "text": "Ngọc Vũ",
-            "image": null
-        },
-        {
-            "text": "Quá ok sắp tới phát minh ra đan dược cấp 9 nữa thì ..!",
-            "image": null
-        },
-        {
-            "text": "Khánh Ly tiêm đi",
-            "image": null
-        },
-        {
-            "text": ".",
-            "image": null
-        },
-        {
-            "text": "Trinh Nguyễn  ko bjk nào về vn",
-            "image": null
-        },
-        {
-            "text": "Đào Thu Hiền",
-            "image": null
-        },
-        {
-            "text": "Hà Anh Chiến cuu dc  chiến r😔😔",
-            "image": null
-        },
-        {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/504907077_122239300298223507_4531305959478355406_n.jpg?stp=dst-jpg_s261x260_tt6&_nc_cat=103&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=ez0St1iWMvsQ7kNvwHILBd9&_nc_oc=Adl20OXN5EFT2DvxhRlNrbWalO8M0aa1BdwUi6Utu1F2bQHlWx2DV_h0pRranUuOHno&_nc_zt=23&_nc_ht=scontent.fsgn5-12.fna&_nc_gid=HYaqt4XM-wB_oKKgyB7L4w&oh=00_AfPIIAYIYtyIHcYVngktMvUd_rL43G5HkAb6oEmCDvp1IA&oe=684C21C2",
-                "width": 261,
-                "height": 141
-            }
-        },
-        {
-            "text": "",
-            "image": {
-                "uri": "https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/505229666_122239300220223507_1200716833859274333_n.jpg?stp=dst-jpg_s261x260_tt6&_nc_cat=100&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=hGUb1g25xM4Q7kNvwFCn8pg&_nc_oc=Adk2fIyND0Bo0Xg691Y4hk2q-WTTM29FViZWhI9B8SpyL5GBhE-c5YrWvvzDToD36j0&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=HYaqt4XM-wB_oKKgyB7L4w&oh=00_AfPQEXed-0u0AXs6P80Tdho5UpE1vqw4vMtIuHi-62go3A&oe=684C3984",
-                "width": 261,
-                "height": 141
-            }
-        },
-        {
-            "text": "Phét",
-            "image": null
-        },
-        {
-            "text": "Công đức vô lượng:))",
-            "image": null
-        },
-        {
-            "text": "NGƯỜI BỐ BẠI LIỆT BÁN SÁCH THƠ NUÔI CON\n               Xin phép chủ trang ạ\nEm là Vũ Đức Nguyên 35 tuổi, một người bố khuyết tật do di chứng của bệnh sốt bại liệt từ thuở nhỏ. Cuộc đời em đã trải qua nhiều chông gai, nhưng may mắn lớn nhất trong cuộc sống này chính là có một cậu con trai nhỏ – ánh sáng, niềm tin và động lực để em cố gắng mỗi ngày.\nMang trong mình khiếm khuyết về thể chất, em không đủ sức khỏe để lao động như bao người. Nhưng em không cho phép mình gục ngã. Thay vì buông xuôi, em chọn cách viết nên những vần thơ từ trái tim, từ nỗi đau, từ tình yêu thương, và từ những khát khao được sống, được cống hiến.\nHiện tại, em đã xuất bản được 8 tập thơ do chính em sáng tác. Mỗi quyển có giá 100.000 đồng miễn phí ship toàn quốc. Mỗi cuốn sách em bán ra không chỉ là nguồn thu nhập nuôi con, mà còn là lời gửi gắm, là hy vọng được chia sẻ, được lắng nghe và được cảm thông.\nNếu có thể, xin mọi người hãy mua một cuốn sách như một cách lan tỏa tình yêu thương và tiếp thêm cho hai cha con em một tia hy vọng trong hành trình phía trước.\nThông tin liên hệ & thanh toán:\nSố tài khoản 0919170345 – Vũ Đức Nguyên – MB Bank (Ngân hàng Quân Đội)\nĐịa chỉ Khu Phố Vạn Lợi, Phường Quảng Tiến, Thành Phố Sầm Sơn, Tỉnh Thanh Hoá-Phone/Zalo: 0919170345\nAnh/chị có thể để lại địa chỉ và số điện thoại em sẽ liên hệ để gửi sách qua hình thức COD hoặc chuyển khoản\nTừ đáy lòng mình, em xin gửi lời cảm ơn chân thành đến tất cả những tấm lòng đã, đang và sẽ đồng hành cùng em.\nTrân trọng\nVũ Đức Nguyên",
-            "image": {
-                "uri": "https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/505232821_2996982950481857_8762689661095111898_n.jpg?stp=dst-jpg_p160x160_tt6&_nc_cat=107&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=cNBVHB9c9mcQ7kNvwEC262V&_nc_oc=Adnlr-jVrdsatndUMXGF4JLdgSXfMnvH52C7D9w246qaEDZWX51jpJbzP8n0FindpX4&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=HYaqt4XM-wB_oKKgyB7L4w&oh=00_AfOSLiRhANm2-m-t8uT8TOmwCGGSsYNteZukz1_rK-rBJA&oe=684C3A48",
-                "width": 160,
-                "height": 213
-            }
-        },
-        {
-            "text": "Tiệm Bánh Hoàng Dương làm tý ko",
-            "image": null
-        },
-        {
-            "text": "Vinh Đoan",
-            "image": null
-        },
-        {
-            "text": ".",
-            "image": null
         }
     ]
 }

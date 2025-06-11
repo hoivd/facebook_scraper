@@ -3,17 +3,20 @@ from typing import Tuple
 import json
 from logger import setup_logger
 import random
+from datetime import datetime
+from typing import Optional
+import logging
 
-logger = setup_logger(__name__)
+logger = setup_logger(__name__, logging.DEBUG)
 
 class Utils():
     @staticmethod
     def load_cookies(path):
-        logger.info("Tiến hành load cookies")
+        logger.debug("Tiến hành load cookies")
         try:
             with open(path, "r", encoding="utf-8") as file:
                 return json.load(file)
-            logger.info(f"Load cookies thành công {path}")
+            logger.debug(f"Load cookies thành công {path}")
         except Exception as e:
             logger.error(f"Lỗi khi load cookies {path} {e}")
             raise Exception("Lỗi khi load cookies", e)
@@ -40,7 +43,7 @@ class Utils():
             with open(json_path, "w", encoding="utf-8") as file:
                 json.dump(json_data, file, ensure_ascii=False, indent=4)
             
-            logger.info(f"Ghi facebook api vào log thành công {data}")
+            logger.debug(f"Ghi facebook api vào log thành công {data}")
         except Exception as e:
             logger.error(f"Lỗi khi ghi facebook api vào log {data}")
 
@@ -48,7 +51,7 @@ class Utils():
         try: 
             with open(json_path, "w", encoding="utf-8") as file:
                 json.dump(data, file, ensure_ascii=False, indent=4)
-            logger.info(f"Ghi json thành công {json_path}")
+            logger.debug(f"Ghi json thành công {json_path}")
         except Exception as e:
             logger.error(f"Lỗi khi ghi json {json_path} {e}")
     
@@ -96,7 +99,7 @@ class Utils():
                     logger.warning(f"API {api_name} không tồn tại")
                     return False
                 else:
-                    logger.info(f"API {api_name} tồn tại")
+                    logger.debug(f"API {api_name} tồn tại")
             return True
         except Exception as e:
             logger.error(f"Lỗi khi kiểm tra api {json_path} {e}")
@@ -120,6 +123,29 @@ class Utils():
             Utils.write_json(json_path, api_json)
         except Exception as e:
             logger.error(f"Lỗi khi export api {api_path} {e}")
+
+    @staticmethod
+    def init_requests_variables(after_time: Optional[str] = None, before_time: Optional[str] = None) -> Tuple[dict, dict]:
+        time_range = dict()
+        if after_time:
+            after_dt = datetime.strptime(after_time.strip(), "%Y-%m-%d") 
+            time_range['after_time'] = int(after_dt.timestamp())
+        else:
+            time_range['after_time'] = 0
+
+        if before_time:
+            before_time = datetime.strptime(before_time.strip(), "%Y-%m-%d") 
+            time_range['before_time'] = int(before_time.timestamp())
+        else: 
+            time_range['before_time'] = 9999999999999
+        
+        page_info = {
+            "has_next_page": True,
+            "end_cursor": ""
+        }
+
+        logger.debug(f"Khởi tạo TimeRange và PageInfo thành công")
+        return time_range, page_info
 
 
         

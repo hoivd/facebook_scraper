@@ -1,0 +1,124 @@
+{
+    "reactions": {
+        "1635855486666999": {
+            "color": "#0866FF",
+            "display_name": "Like",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "like",
+            "type": 1
+        },
+        "1678524932434102": {
+            "color": "#f33e58",
+            "display_name": "Love",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "love",
+            "type": 2
+        },
+        "869508936487422": {
+            "color": "#f0ba15",
+            "display_name": "Selfie",
+            "is_deprecated": false,
+            "is_visible": false,
+            "name": "selfie",
+            "type": 13
+        },
+        "1663186627268800": {
+            "color": "#7e64c4",
+            "display_name": "Grateful",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "dorothy",
+            "type": 11
+        },
+        "899779720071651": {
+            "color": "#ec7ebd",
+            "display_name": "Pride",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "toto",
+            "type": 12
+        },
+        "115940658764963": {
+            "color": "#f7b125",
+            "display_name": "Haha",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "haha",
+            "type": 4
+        },
+        "1667835766830853": {
+            "color": "#f0ba15",
+            "display_name": "Yay",
+            "is_deprecated": true,
+            "is_visible": false,
+            "name": "yay",
+            "type": 5
+        },
+        "478547315650144": {
+            "color": "#f7b125",
+            "display_name": "Wow",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "wow",
+            "type": 3
+        },
+        "1536130110011063": {
+            "color": "#f0ba15",
+            "display_name": "Confused",
+            "is_deprecated": true,
+            "is_visible": false,
+            "name": "confused",
+            "type": 10
+        },
+        "613557422527858": {
+            "color": "#f7b125",
+            "display_name": "Care",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "support",
+            "type": 16
+        },
+        "908563459236466": {
+            "color": "#f7b125",
+            "display_name": "Sad",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "sorry",
+            "type": 7
+        },
+        "444813342392137": {
+            "color": "#e9710f",
+            "display_name": "Angry",
+            "is_deprecated": false,
+            "is_visible": true,
+            "name": "anger",
+            "type": 8
+        },
+        "938644726258608": {
+            "color": "#f0ba15",
+            "display_name": "React",
+            "is_deprecated": true,
+            "is_visible": false,
+            "name": "flame",
+            "type": 14
+        },
+        "1609920819308489": {
+            "color": "#f0ba15",
+            "display_name": "React",
+            "is_deprecated": true,
+            "is_visible": false,
+            "name": "plane",
+            "type": 15
+        }
+    },
+    "ordering": [
+        "1635855486666999",
+        "1678524932434102",
+        "115940658764963",
+        "478547315650144",
+        "908563459236466",
+        "444813342392137"
+    ]
+}

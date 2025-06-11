@@ -12,11 +12,9 @@ import random
 import time
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.remote.webelement import WebElement
+import logging 
 
-
-
-
-logger = setup_logger(__name__)
+logger = setup_logger(__name__, logging.DEBUG)
 
 class ControllerDriver:
     def __init__(self):
@@ -38,7 +36,7 @@ class ControllerDriver:
         chrome_options.add_argument("--remote-debugging-port=9222")  # Cho phép remote debugging (có thể tắt nếu không cần)
         
         self.driver = webdriver.Chrome(options=chrome_options)
-        logger.info("Khởi động chrome driver thành công")
+        logger.debug("Khởi động chrome driver thành công")
 
         # Khởi tạo DevTools client
         self.browser = pychrome.Browser(url="http://127.0.0.1:9222")
@@ -57,12 +55,12 @@ class ControllerDriver:
             method = request.get('method')
             payload = request.get('postData')
             if "graphql" in url:
-                logger.info("Tìm thấy api graphql")
+                logger.debug("Tìm thấy api graphql")
                 graphql_api = Parser._get_api_value(payload)
                 Utils.check_and_add_api(self.api_info_path, graphql_api)
         except Exception as e:
             if self.is_driver_alive() == False:
-                logger.info("Driver đã đóng")
+                logger.debug("Driver đã đóng")
             else:
                 raise Exception(f"Lỗi khi lấy api {e}")
 
@@ -80,14 +78,14 @@ class ControllerDriver:
             # Dừng DevTools client (nếu có)
             if self.tab:
                 self.tab.stop()
-                logger.info("DevTools client đã dừng.")
+                logger.debug("DevTools client đã dừng.")
             if hasattr(self, 'browser') and self.browser:
                     self.browser.close_tab(self.tab)
-                    logger.info("Tab DevTools đã đóng.")
+                    logger.debug("Tab DevTools đã đóng.")
             # Đóng WebDriver
             if self.driver:
                 self.driver.quit()
-                logger.info("Trình duyệt WebDriver đã đóng.")
+                logger.debug("Trình duyệt WebDriver đã đóng.")
         except Exception as e:
             logger.error(f"Đã xảy ra lỗi khi đóng driver và DevTools: {e}")
 
@@ -156,10 +154,10 @@ class ControllerDriver:
 
             try:
                 element = self.driver.find_element(by, selector)
-                logger.info(f"Tìm thấy phần tử với {by} = {selector}")
+                logger.debug(f"Tìm thấy phần tử với {by} = {selector}")
                 return element
             except NoSuchElementException:
-                logger.info(f"Không tìm thấy với {by} = {selector}, thử tiếp...")
+                logger.debug(f"Không tìm thấy với {by} = {selector}, thử tiếp...")
                 continue
 
         # Nếu duyệt hết danh sách vẫn không tìm thấy
@@ -182,7 +180,7 @@ class ControllerDriver:
         """
         try:
             element = self.driver.find_element(by, locator)
-            logger.info(f"Tìm thấy phần tử {by} = {locator}")
+            logger.debug(f"Tìm thấy phần tử {by} = {locator}")
             return element
         except Exception as e:
             logger.warning(f"Không tìm thấy phần tử với {by} = {locator} {e}")
@@ -418,12 +416,12 @@ class ControllerDriver:
             min_wait: Thời gian chờ tối thiểu giữa các lần cuộn (giây).
             max_wait: Thời gian chờ tối đa giữa các lần cuộn (giây).
         """
-        logger.info("Tiến hành mô phỏng cuộn trang")
+        logger.debug("Tiến hành mô phỏng cuộn trang")
         last_height = self.driver.execute_script("return document.body.scrollHeight")
 
         for i in range(max_scrolls):
             # Tạo khoảng cách cuộn ngẫu nhiên
-            logger.info(f"Thực hiện cuộn trang lần thứ {i + 1}")
+            logger.debug(f"Thực hiện cuộn trang lần thứ {i + 1}")
             scroll_offset = random.randint(100, 800)
             self.driver.execute_script(f"window.scrollBy(0, {scroll_offset});")
 
@@ -432,7 +430,7 @@ class ControllerDriver:
             wait_time = random.uniform(min_wait, max_wait)
             time.sleep(wait_time)
 
-        logger.info("Mô phỏng cuộn trang thành công")
+        logger.debug("Mô phỏng cuộn trang thành công")
 
     def is_page_loaded(self, timeout: int = 10) -> bool:
         """
@@ -449,7 +447,7 @@ class ControllerDriver:
             WebDriverWait(self.driver, timeout).until(
                 lambda d: d.execute_script("return document.readyState") == "complete"
             )
-            logger.info("Trang đã tải xong")
+            logger.debug("Trang đã tải xong")
             return True
         except:
             logger.warning("Đã hết thời gian chờ trang tải chưa xong!!")
@@ -471,13 +469,13 @@ class ControllerDriver:
         """
         try:
             if element.is_displayed() and element.is_enabled():
-                logger.info(f"Phần tử {element} có thể click được")
+                logger.debug(f"Phần tử {element} có thể click được")
                 return True
             else:
-                logger.info(f"Phần tử {element} không thể click được")
+                logger.debug(f"Phần tử {element} không thể click được")
                 return False
         except Exception:
-            logger.info(f"Phần tử {element} không thể click được")
+            logger.debug(f"Phần tử {element} không thể click được")
             return False
 
     def scroll_element(self, element: WebElement, pixels: int = 300, delay: float = 0.5, repeat: int = 3):
@@ -495,7 +493,7 @@ class ControllerDriver:
             None
         """
         for i in range(repeat):
-            logger.info(f"Thực hiện cuộn trang lần {i + 1}")
+            logger.debug(f"Thực hiện cuộn trang lần {i + 1}")
             self.driver.execute_script("arguments[0].scrollBy(0, arguments[1]);", element, pixels)
             time.sleep(delay)
 
@@ -509,9 +507,9 @@ class ControllerDriver:
                 window.scrollTo({ top: centerY });
             '''
             self.driver.execute_script(script, element)
-            logger.info("Cuộn vào phần tử thành công")
+            logger.debug("Cuộn vào phần tử thành công")
         except Exception as e:
-            logger.info(f"Lỗi khi cuộn vào phần tử {e}")
+            logger.debug(f"Lỗi khi cuộn vào phần tử {e}")
 
     def get_first_scrollable_element(self) -> WebElement:
         try:
@@ -541,7 +539,7 @@ class ControllerDriver:
                 return visibleScrollables[0];
             '''
             scrollable_element = self.driver.execute_script(script)
-            logger.info(f"Phần tử cuộn được {scrollable_element}")
+            logger.debug(f"Phần tử cuộn được {scrollable_element}")
             return scrollable_element
         except Exception as e:
             raise Exception("Lỗi khi lấy phần tử cuộn được")
