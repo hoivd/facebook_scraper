@@ -95,6 +95,37 @@ class Requester():
             return None 
 
     @staticmethod
+    def _get_comments_depth1(headers: dict, comment_id: str, expansion_token: str,  get_comment_api: str, end_cursor: str = "") -> requests.Response:
+        variables = {
+            "expansionToken": expansion_token,
+            "scale": 1,
+            "id": comment_id,
+            "__relay_internal__pv__IsWorkUserrelayprovider": "false"
+        }
+
+        if end_cursor:
+            variables['repliesAfterCursor'] = end_cursor
+        
+        data = {
+            "variables": str(variables),
+            "doc_id": get_comment_api
+        }
+
+        url = "https://www.facebook.com/api/graphql/"
+        try:
+            resp = requests.post(url, data=data, headers=headers)
+
+            if resp.status_code != 200:
+                logger.warning(f"Lỗi khi request comment {resp.status_code}")
+            else:
+                logger.debug(f"Lấy comment thành công")
+            return resp
+        except Exception as e:
+            logger.debug(f"Lỗi khi request comment {e}")
+            return None 
+
+
+    @staticmethod
     def _get_posts(headers: dict, time_range: dict, identifier: str, entryPoint: str, docid: str, cursor: str = "") -> requests.Response:
         data = {
             'variables': str({

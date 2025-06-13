@@ -11,6 +11,15 @@ logger = setup_logger(__name__, logging.DEBUG)
 
 class Utils():
     @staticmethod
+    def write_txt(path: str, data: str) -> None:
+        try:
+            with open(path, "w", encoding="utf-8") as file:
+                file.write(data)
+                logger.debug(f"Ghi nội dung vào {path} thành công")
+        except Exception as e:
+            logger.debug(f"Ghi nội dung vào {path} không thành công")
+        
+    @staticmethod
     def load_cookies(path):
         logger.debug("Tiến hành load cookies")
         try:
@@ -47,6 +56,7 @@ class Utils():
         except Exception as e:
             logger.error(f"Lỗi khi ghi facebook api vào log {data}")
 
+    @staticmethod
     def write_json(json_path: str, data: dict) -> None:
         try: 
             with open(json_path, "w", encoding="utf-8") as file:
@@ -54,6 +64,16 @@ class Utils():
             logger.debug(f"Ghi json thành công {json_path}")
         except Exception as e:
             logger.error(f"Lỗi khi ghi json {json_path} {e}")
+    
+    @staticmethod
+    def write_jsonl(jsonl_path: str, data: dict, mode: str = "a") -> None:
+        try:
+            with open(jsonl_path, mode=mode, encoding="utf-8") as file:
+                json.dump(data, file, ensure_ascii=False)
+                file.write("\n")
+                logger.debug(f"Ghi jsonl thành công {jsonl_path}")
+        except Exception as e:
+            logger.error(f"Lỗi khi ghi jsonl {jsonl_path} {e}")
     
     @staticmethod
     def load_json(json_path: str) -> dict:
@@ -147,6 +167,19 @@ class Utils():
         logger.debug(f"Khởi tạo TimeRange và PageInfo thành công")
         return time_range, page_info
 
+    @staticmethod
+    def n_post2n_iter(n_post: int) -> int:
+        return n_post // 3
 
-        
-        
+    @staticmethod
+    def n_comment2n_iter(n_comment: int) -> int:
+        return n_comment // 10
+
+    @staticmethod
+    def remove_file(file_path: str) -> None:
+        try:
+            if os.path.exists(file_path):
+                os.remove(file_path)
+            logger.debug(f"Xoá file {file_path} thành công")
+        except Exception as e:
+            logger.debug(f"Xoá file {file_path} không thành công")

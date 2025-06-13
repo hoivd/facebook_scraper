@@ -113,7 +113,6 @@ class Parser():
 
             for json in jsons:
                 try:
-                    print(json['extensions']['sr_payload']['ddd']['jsmods'].keys())
                     resources = json['extensions']['sr_payload']['ddd']['jsmods']['define']  
                     for define in resources:
                         if define[0] == 'DynamicUFIReactionTypes':
@@ -142,10 +141,8 @@ class Parser():
             return None
 
     @staticmethod
-    def parse_detail_reactions(comment_edge: dict, reactions_id_path: str) -> int:
+    def parse_detail_reactions(comment_edge: dict, reaction_id_info: dict) -> int:
         try:
-            reaction_id_info = Utils.load_json(reactions_id_path)
-
             reaction_detail = dict()
             reaction_edges = comment_edge['node']['feedback']['top_reactions']['edges']
 
@@ -177,15 +174,72 @@ class Parser():
             return {}
 
     @staticmethod
-    def parse_reaction_comments_info(comment_edge: dict, reaction_id_path: str) -> dict:
+    def parse_reaction_comments_info(comment_edge: dict, reaction_id_info: dict) -> dict:
         logger.debug("Tiến hành lấy thông tin comment")
         reactions_info = dict()
         reactions_info['total'] = Parser.parse_total_reactions(comment_edge)
-        reactions_info['detail'] = Parser.parse_detail_reactions(comment_edge, reaction_id_path)
+        reactions_info['detail'] = Parser.parse_detail_reactions(comment_edge, reaction_id_info)
         return reactions_info
 
     @staticmethod
-    def parse_comments(resp_json: dict, reactions_id_path: str, save_dir: str = "data\\image") -> list:
+    def scraper_depth1_comments(headers: dict, feedback_id: str, expansion_token: str,
+                    reaction_id_info: dict, cmt_api_path: str = "./api_info/comment_api.json",
+                    max_comment: int = 50) -> None:
+        try: 
+            logger.debug(f"{"-" * 10} Thực hiện lấy DEPTH01 COMMENT: {"-" * 10}")
+            logger.debug(f"Post ID: {feedback_id}")
+            logger.debug(f"Expansion Token {expansion_token}")
+
+            cmt_api = Utils.load_json(cmt_api_path)
+            logger.debug(f"API Get Comment {cmt_api}") 
+
+            # Lấy api get comment gốc và gửi request
+            depth1_comment_api = cmt_api['Depth1CommentsListPaginationQuery']
+
+            comment_info = list()
+
+            page_info = {
+                'has_next_page': True,
+                'end_cursor': ""
+            }
+            iter = 0
+            max_iter = Utils.n_comment2n_iter(max_comment)
+            while page_info['has_next_page'] and iter < max_iter:
+                logger.debug(f"{'-' * 20} DEPTH01 COMMENT ITER {iter} {'-' * 20}")
+                end_cursor = page_info['end_cursor']
+                resp = Requester._get_comments_depth1(headers, comment_id=feedback_id, expansion_token=expansion_token, get_comment_api=depth1_comment_api, end_cursor=end_cursor)
+                logger.debug(resp.request.body)
+                try:
+                    resp_json = resp.json()
+                except:
+                    path = "check_response.txt"
+                    Utils.write_txt(path, resp.text)
+                    resp_json = Parser.parse_jsons(resp)[0]
+
+                logger.debug(resp_json.keys())
+                
+                comments = Parser.parse_depth1_comments(resp_json, reaction_id_info=reaction_id_info)
+                page_info = Parser.parse_depth1_comment_page_info(resp)
+
+                comment_info += list(comments)
+
+                iter += 1
+                
+            for idx, comment in enumerate(comment_info):
+                logger.debug(f"Comment {idx}:")
+                logger.debug(f"Text: {comment['text']}")
+                logger.debug(f"Image: {comment['image']}")
+                logger.debug(f"\n")
+
+            logger.debug(f"{"-" * 10} Lấy DEPTH01 COMMENT thành công {"-" * 10}")                
+            return comment_info
+        except Exception as e:
+            logger.error(f"Lỗi khi lấy comment {e}")
+            raise Exception(f"Lỗi khi lấy comment {e}")
+
+
+    @staticmethod
+    def parse_comments(resp_json: dict, headers: dict, reaction_id_info: dict, save_dir: str = "data\\image") -> list:
         edges = resp_json['data']['node']['comment_rendering_instance_for_feed_location']['comments']['edges']
 
         comments = []
@@ -217,28 +271,100 @@ class Parser():
                 logger.warning("Không lấy được ảnh trong comment")
 
             try:
-                comment['reactions'] = Parser.parse_reaction_comments_info(edge, reactions_id_path)
+                comment['reactions'] = Parser.parse_reaction_comments_info(edge, reaction_id_info)
             except Exception as e:
                 logger.warning("Không lấy được reactions trong comment")
+            
+            feedback_info = dict()
+        # try:
+            feedback_info['total_count'] = edge['node']['feedback']['replies_fields']['total_count']
+            feedback_info['id'] = edge['node']['feedback']['id']
+            feedback_info['expansion_token'] = edge['node']['feedback']['expansion_info']['expansion_token']
+            feedback_info['comments'] = Parser.scraper_depth1_comments(headers=headers, feedback_id=feedback_info['id'], expansion_token=feedback_info['expansion_token'], \
+                                                                        reaction_id_info=reaction_id_info)
+            logger.debug(f"Lấy FEEDBACK_INFO cho parent comment thành công")
+        # except Exception as e:
+            # logger.warning(f"Không lấy được FEEDBACK_INFO cho parent comment {e}")
+        # finally:
+            comment['feedback_info'] = feedback_info
 
             comments.append(comment)
 
         return comments
 
     @staticmethod
-    def parse_comments_info(resp: requests.Response, save_dir="data\\image", reaction_id_path="./api_info/reaction_ids.json") -> dict:
+    def parse_comments_info(resp: requests.Response, headers: dict, reaction_id_info: dict, save_dir="data\\image") -> dict:
         resp_json = resp.json()
         comments_info = dict()
         comments_info['total_comment'] = Parser.parse_total_cmt(resp_json)
         comments_info['total_parent_comment'] = Parser.parse_total_parent_cmt(resp_json)
-        comments_info['comments'] = Parser.parse_comments(resp_json, reaction_id_path, save_dir=save_dir)
+        comments_info['comments'] = Parser.parse_comments(resp_json, headers, reaction_id_info, save_dir=save_dir)
         return comments_info
 
     @staticmethod
     def parse_page_info(resp: requests.Response) -> str:
         resp_json = resp.json()
         page_info = resp_json['data']['node']['comment_rendering_instance_for_feed_location']['comments']['page_info']
+
         return page_info
+    @staticmethod
+    def parse_depth1_comment_page_info(resp: requests.Response) -> str:
+        resp_json = Parser.parse_jsons(resp)[0]
+        page_info = resp_json['data']['node']['replies_connection']['page_info']
+        return page_info
+    
+    @staticmethod
+    def parse_depth1_comments(resp_json: dict, reaction_id_info: dict, save_dir: str = "data\\image") -> list:
+        logger.debug(f"Tiến hành parse DEPTH1 COMMENT")
+        edges = resp_json['data']['node']['replies_connection']['edges']
+
+        comments = []
+        for idx, edge in enumerate(edges):
+            logger.debug(f"Tiến hành parse edge thứ {idx+1}")
+            comment = {
+                'text': "",
+                'image': None,
+                'reactions': {}
+            }
+            try:
+                comment['text'] = edge['node']['body']['text']
+            except Exception as e:
+                logger.warning("Không tìm thấy text trong comment") 
+            
+            try:
+                attachments = edge['node'].get('attachments', [])
+                if attachments:
+                    att = attachments[-1]
+                    img_info = att['style_type_renderer']['attachment']['media']['image']
+                    uri = img_info.get('uri')
+                    if uri:
+                        filename = os.path.join(save_dir, os.path.basename(uri.split("?")[0]))
+                        if is_valid_image(filename):
+                            img = requests.get(uri)
+                            with open(filename, "wb") as f:
+                                f.write(img.content)
+                            comment['image'] = filename
+            except Exception as e:
+                logger.warning("Không lấy được ảnh trong comment")
+
+            try:
+                comment['reactions'] = Parser.parse_reaction_comments_info(edge, reaction_id_info)
+            except Exception as e:
+                logger.warning("Không lấy được reactions trong comment")
+            
+            feedback_info = dict()
+            try:
+                feedback_info['total_count'] = edge['node']['feedback']['replies_fields']['total_count']
+                feedback_info['id'] = edge['node']['feedback']['id']
+                feedback_info['expansion_token'] = edge['node']['feedback']['expansion_info']['expansion_token']
+                comment['feedback_info'] = feedback_info
+                logger.debug(f"Lấy FEEDBACK_INFO cho parent comment thành công")
+            except Exception as e:
+                logger.warning(f"Không lấy được FEEDBACK_INFO cho parent comment {e}")
+
+            comments.append(comment)
+
+        return comments
     
     
     @staticmethod
