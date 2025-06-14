@@ -227,8 +227,6 @@ class Parser():
             return comment_info
         except Exception as e:
             logger.error(f"Lỗi khi lấy comment {e}")
-            raise Exception(f"Lỗi khi lấy comment {e}")
-
 
     @staticmethod
     def parse_comments(resp_json: dict, headers: dict, reaction_id_info: dict, save_dir: str = "data\\image") -> list:

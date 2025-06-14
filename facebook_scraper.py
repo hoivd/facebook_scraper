@@ -79,8 +79,6 @@ class FacebookScraper():
             logger.debug(f"Lấy comment thành công")
         except Exception as e:
             logger.error(f"Lỗi khi lấy comment {e}")
-            raise Exception(f"Lỗi khi lấy comment {e}")
-
 
     def crawl_post(self, page_url: str, after_time: int = None, before_time: int = None, 
                    ranking_comment: Ranking = Ranking.MOST_RELEVANT, include_comment: bool = True, 
