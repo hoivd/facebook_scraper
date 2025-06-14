@@ -284,7 +284,9 @@ class Parser():
 
     @staticmethod
     def parse_comments_info(resp: requests.Response, headers: dict, reaction_id_info: dict, save_dir="data\\image") -> dict:
-        resp_json = resp.json()
+        resp_jsons = Parser.parse_jsons(resp)
+        resp_json = resp_jsons[0]
+
         comments_info = dict()
         comments_info['total_comment'] = Parser.parse_total_cmt(resp_json)
         comments_info['total_parent_comment'] = Parser.parse_total_parent_cmt(resp_json)
@@ -558,6 +560,7 @@ class Parser():
 
     @staticmethod
     def parse_jsons(resp: requests.Response) -> dict:
+        logger.debug(f"Tiến hành parse jsons")
         return [json.loads(d) for d in resp.text.split('\r\n', -1) if d.strip()]        
 
     @staticmethod

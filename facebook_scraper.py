@@ -185,17 +185,17 @@ class FacebookScraper():
 if __name__ == "__main__":
     scraper = FacebookScraper()
 
-    # post_url = "https://www.facebook.com/Theanh28/posts/pfbid07nWnrFkUs8LLdnyah9VSwXngRfegP5iGDjzCgkL17dp2H4TboYyM8GRzewXGD6uql"
-    # post_id = "ZmVlZGJhY2s6MTAyODY4ODQzMjc3OTU5Mg==" 
-    # comment_api_path = "./api_info/comment_api.json"
-    # ranking = Ranking.ALL_COMMENTS
-    # reaction_id  = Utils.load_json("./api_info/reaction_ids.json")
-    # scraper.crawl_comment(post_url, post_id, ranking, reaction_id, comment_api_path)
+    post_url = "https://www.facebook.com/Theanh28/posts/pfbid02s6nYu5teN3M5KyLuBZVrHGPyZrbxWSzSisV382h7bC7SdcKP4giHydTWKy63fhLLl"
+    post_id = "ZmVlZGJhY2s6MTAxMzkzNDcwMDkyMTYzMg==" 
+    comment_api_path = "./api_info/comment_api.json"
+    ranking = Ranking.ALL_COMMENTS
+    reaction_id  = Utils.load_json("./api_info/reaction_ids.json")
+    scraper.crawl_comment(post_url, post_id, ranking, reaction_id, comment_api_path)
     
-    fanpage_url = "https://www.facebook.com/Theanh28"
-    before_time = "2025-5-31"
-    ranking = Ranking.MOST_RELEVANT
-    scraper.crawl_post(fanpage_url, max_post=200, ranking_comment=ranking, before_time=before_time )
+    # fanpage_url = "https://www.facebook.com/Theanh28"
+    # before_time = "2025-5-31"
+    # ranking = Ranking.MOST_RELEVANT
+    # scraper.crawl_post(fanpage_url, max_post=200, ranking_comment=ranking, before_time=before_time )
 
 
     # Parser._get_reaction_id(fanpage_url)
