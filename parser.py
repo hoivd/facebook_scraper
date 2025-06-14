@@ -208,17 +208,9 @@ class Parser():
                 logger.debug(f"{'-' * 20} DEPTH01 COMMENT ITER {iter} {'-' * 20}")
                 end_cursor = page_info['end_cursor']
                 resp = Requester._get_comments_depth1(headers, comment_id=feedback_id, expansion_token=expansion_token, get_comment_api=depth1_comment_api, end_cursor=end_cursor)
-                logger.debug(resp.request.body)
-                try:
-                    resp_json = resp.json()
-                except:
-                    path = "check_response.txt"
-                    Utils.write_txt(path, resp.text)
-                    resp_json = Parser.parse_jsons(resp)[0]
-
-                logger.debug(resp_json.keys())
-                
-                comments = Parser.parse_depth1_comments(resp_json, reaction_id_info=reaction_id_info)
+                resp_jsons = Parser.parse_jsons(resp)
+                data_json = resp_jsons[0]
+                comments = Parser.parse_depth1_comments(data_json, reaction_id_info=reaction_id_info)
                 page_info = Parser.parse_depth1_comment_page_info(resp)
 
                 comment_info += list(comments)

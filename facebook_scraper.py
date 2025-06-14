@@ -49,7 +49,9 @@ class FacebookScraper():
                 resp = Requester._get_more_comments(headers, feedback_id, more_comment_api, end_cursor)
 
                 logger.debug(f"Tiến hành parser response:")
-                comments = Parser.parse_comments(resp.json(), headers, reaction_id_info) 
+                resp_jsons = Parser.parse_jsons(resp)
+                data_json = resp_jsons[0]
+                comments = Parser.parse_comments(data_json, headers, reaction_id_info) 
                 page_info = Parser.parse_page_info(resp)
 
                 comment_info['comments'] += comments
@@ -117,7 +119,7 @@ class FacebookScraper():
             logger.debug(f"NUM ITERATIONS: {n_iter}")
 
             fanpage_name = page_url.rstrip('/').split('/')[-1] or "unknown"
-            file_jsonl_path = f"data/json/posts_{fanpage_name}.jsonl"
+            file_jsonl_path = f"data/json/posts_{fanpage_name}_{before_time}.jsonl"
             Utils.remove_file(file_jsonl_path)
 
             for round_idx in range(n_iter):
@@ -193,8 +195,10 @@ if __name__ == "__main__":
     # scraper.crawl_comment(post_url, post_id, ranking, reaction_id, comment_api_path)
     
     fanpage_url = "https://www.facebook.com/Theanh28"
-    before_time = "2025-3-3"
-    scraper.crawl_post(fanpage_url, max_post=200)
+    before_time = "2025-5-31"
+    ranking = Ranking.MOST_RELEVANT
+    scraper.crawl_post(fanpage_url, max_post=200, ranking_comment=ranking, before_time=before_time )
+
 
     # Parser._get_reaction_id(fanpage_url)
  
