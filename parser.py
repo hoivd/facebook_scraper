@@ -10,6 +10,7 @@ from requester import Requester
 from typing import Optional, Tuple
 from utils import Utils
 import logging
+import time
 
 logger = setup_logger(__name__, logging.DEBUG)
 
@@ -184,7 +185,10 @@ class Parser():
     @staticmethod
     def scraper_depth1_comments(headers: dict, feedback_id: str, expansion_token: str,
                     reaction_id_info: dict, cmt_api_path: str = "./api_info/comment_api.json",
-                    max_comment: int = 50) -> None:
+                    max_comment: int = 50,
+                    max_retry: int = 3, 
+                    break_time: int = 1) -> None:
+
         try: 
             logger.debug(f"{"-" * 10} Thực hiện lấy DEPTH01 COMMENT: {"-" * 10}")
             logger.debug(f"Post ID: {feedback_id}")
@@ -203,18 +207,29 @@ class Parser():
                 'end_cursor': ""
             }
             iter = 0
-            max_iter = Utils.n_comment2n_iter(max_comment)
-            while page_info['has_next_page'] and iter < max_iter:
+            retry_count = 0
+            while page_info['has_next_page'] and len(comment_info) < max_comment:
                 logger.debug(f"{'-' * 20} DEPTH01 COMMENT ITER {iter} {'-' * 20}")
-                end_cursor = page_info['end_cursor']
-                resp = Requester._get_comments_depth1(headers, comment_id=feedback_id, expansion_token=expansion_token, get_comment_api=depth1_comment_api, end_cursor=end_cursor)
-                resp_jsons = Parser.parse_jsons(resp)
-                data_json = resp_jsons[0]
-                comments = Parser.parse_depth1_comments(data_json, reaction_id_info=reaction_id_info)
-                page_info = Parser.parse_depth1_comment_page_info(resp)
+                try:
+                    end_cursor = page_info['end_cursor']
+                    resp = Requester._get_comments_depth1(headers, comment_id=feedback_id, expansion_token=expansion_token, get_comment_api=depth1_comment_api, end_cursor=end_cursor)
+                    resp_jsons = Parser.parse_jsons(resp)
+                    data_json = resp_jsons[0]
+                    comments = Parser.parse_depth1_comments(data_json, reaction_id_info=reaction_id_info)
+                    cur_page_info = Parser.parse_depth1_comment_page_info(resp)
 
-                comment_info += list(comments)
-
+                    logger.debug(f"{'-' * 20} Lấy DEPTH01 COMMENT ITER thành công {iter} {'-' * 20}")
+                    comment_info += list(comments)
+                    page_info = cur_page_info
+                    retry_count = 0
+                except:
+                    logger.debug(f"{'-' * 20} Lấy DEPTH01 COMMENT ITER {iter} thất bại {'-' * 20}")
+                    retry_count += 1
+                    logger.debug(f"Retry lần thứ {retry_count}")
+                    if retry_count >= max_retry:
+                        logger.debug(f"Thử lại thất bại")
+                        break
+                time.sleep(break_time)
                 iter += 1
                 
             for idx, comment in enumerate(comment_info):
@@ -266,16 +281,16 @@ class Parser():
                 logger.warning("Không lấy được reactions trong comment")
             
             feedback_info = dict()
-        # try:
+        try:
             feedback_info['total_count'] = edge['node']['feedback']['replies_fields']['total_count']
             feedback_info['id'] = edge['node']['feedback']['id']
             feedback_info['expansion_token'] = edge['node']['feedback']['expansion_info']['expansion_token']
             feedback_info['comments'] = Parser.scraper_depth1_comments(headers=headers, feedback_id=feedback_info['id'], expansion_token=feedback_info['expansion_token'], \
                                                                         reaction_id_info=reaction_id_info)
             logger.debug(f"Lấy FEEDBACK_INFO cho parent comment thành công")
-        # except Exception as e:
-            # logger.warning(f"Không lấy được FEEDBACK_INFO cho parent comment {e}")
-        # finally:
+        except Exception as e:
+            logger.warning(f"Không lấy được FEEDBACK_INFO cho parent comment {e}")
+        finally:
             comment['feedback_info'] = feedback_info
 
             comments.append(comment)
@@ -295,7 +310,8 @@ class Parser():
 
     @staticmethod
     def parse_page_info(resp: requests.Response) -> str:
-        resp_json = resp.json()
+        resp_jsons = Parser.parse_jsons(resp)
+        resp_json = resp_jsons[0]
         page_info = resp_json['data']['node']['comment_rendering_instance_for_feed_location']['comments']['page_info']
 
         return page_info

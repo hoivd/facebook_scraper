@@ -16,7 +16,8 @@ class FacebookScraper():
                        reaction_id_info: dict,
                         cmt_api_path: str,
                        has_return: bool = False,
-                        has_write: bool = True, max_comment: int = 50) -> None:
+                        has_write: bool = True, max_comment: int = 50, max_depth1_comment: int = 50,
+                        max_retry: int = 3, break_time: int = 2) -> None:
         try: 
             logger.debug(f"{'-' * 20} Thực hiện lấy COMMENT: {'-' * 20}")
             logger.debug(f"Post URL: {post_url}")
@@ -42,21 +43,31 @@ class FacebookScraper():
             logger.debug(f"Lấy thêm comment API: {more_comment_api}")
             max_iter = Utils.n_comment2n_iter(max_comment) - 1
             iter = 0
-            while page_info['has_next_page'] and iter < max_iter:
-                logger.debug(f"{'-' * 20} COMMENT ITER {iter} {'-' * 20}")
+            retry_count = 0
+            while page_info['has_next_page'] and len(comment_info['comments']) < max_comment:
+                logger.debug(f"{'-' * 20} PARENT COMMENT ITER {iter} {'-' * 20}")
+                try:
+                    end_cursor = page_info['end_cursor']
+                    resp = Requester._get_more_comments(headers, feedback_id, ranking,  more_comment_api, end_cursor)
 
-                end_cursor = page_info['end_cursor']
-                resp = Requester._get_more_comments(headers, feedback_id, more_comment_api, end_cursor)
+                    logger.debug(f"Tiến hành parser response:")
+                    resp_jsons = Parser.parse_jsons(resp)
+                    data_json = resp_jsons[0]
+                    comments = Parser.parse_comments(data_json, headers, reaction_id_info) 
+                    cur_page_info = Parser.parse_page_info(resp)
 
-                logger.debug(f"Tiến hành parser response:")
-                resp_jsons = Parser.parse_jsons(resp)
-                data_json = resp_jsons[0]
-                comments = Parser.parse_comments(data_json, headers, reaction_id_info) 
-                page_info = Parser.parse_page_info(resp)
-
-                comment_info['comments'] += comments
-
+                    logger.debug(f"{'-' * 20}Lấy PARENT COMMENT ITER {iter} thành công{'-' * 20}")
+                    comment_info['comments'] += comments
+                    page_info = cur_page_info
+                    retry_count = 0
+                except:
+                    logger.debug(f"{'-' * 20} Lỗi khi lấy PARENT COMMENT ITER {iter} {'-' * 20}")
+                    retry_count += 1
+                    if retry_count >= max_retry:
+                        logger.warning(f"Thất bại khi lấy PARENT COMMENT --- Thử lại lần {retry_count+1} ---")
+                        break
                 iter += 1
+                time.sleep(break_time)
                 
             for idx, comment in enumerate(comment_info["comments"]):
                 logger.debug(f"Comment {idx}:")
@@ -68,7 +79,6 @@ class FacebookScraper():
             # if has_write:
             #     comments_path = "./data/jsonl/comments.jsonl" 
             #     os.makedirs(os.path.dirname(comments_path), exist_ok=True)
-
             #     Utils.write_jsonl(comments_path, comment_info)
 
             path = "./facebook_urls/comments.json"
@@ -76,15 +86,16 @@ class FacebookScraper():
 
             if has_return:
                 return comment_info
-            logger.debug(f"Lấy comment thành công")
+            logger.debug(f"Lấy PARENT COMMENT thành công")
         except Exception as e:
-            logger.error(f"Lỗi khi lấy comment {e}")
+            logger.error(f"Lỗi khi lấy PARENT COMMENT {e}")
 
     def crawl_post(self, page_url: str, after_time: int = None, before_time: int = None, 
                    ranking_comment: Ranking = Ranking.MOST_RELEVANT, include_comment: bool = True, 
                    save_dir: str = "data\\image", max_post: int = 10, 
                    comment_api_path: str = "./api_info/comment_api.json", 
-                   return_posts: bool = False):
+                   return_posts: bool = False,
+                    max_parent_comment: int = 50, max_depth1_comment: int = 50):
         try:
             logger.debug(f"----------------Chương trình lấy post---------------")
             headers = Requester._get_headers(page_url)
@@ -148,7 +159,9 @@ class FacebookScraper():
                                 if include_comment:
                                     post_url = post_info['post_url']
                                     feedback_id = post_info['feedback_id']
-                                    post_info['comments'] = self.crawl_comment(post_url, feedback_id, ranking_comment, reaction_id, comment_api_path, has_return=True)
+                                    post_info['comments'] = self.crawl_comment(post_url, feedback_id, ranking_comment,
+                                                                                reaction_id, comment_api_path, has_return=True,
+                                                                                 max_comment=max_parent_comment, max_depth1_comment=max_depth1_comment)
 
                                 Utils.write_jsonl(file_jsonl_path, post_info)      
                                 all_posts.append(post_info)
@@ -188,9 +201,12 @@ if __name__ == "__main__":
     post_url = "https://www.facebook.com/Theanh28/posts/pfbid02s6nYu5teN3M5KyLuBZVrHGPyZrbxWSzSisV382h7bC7SdcKP4giHydTWKy63fhLLl"
     post_id = "ZmVlZGJhY2s6MTAxMzkzNDcwMDkyMTYzMg==" 
     comment_api_path = "./api_info/comment_api.json"
-    ranking = Ranking.ALL_COMMENTS
+    ranking = Ranking.MOST_RELEVANT
+    logger.debug(f"Ranking Filter: {ranking.value}")
     reaction_id  = Utils.load_json("./api_info/reaction_ids.json")
-    scraper.crawl_comment(post_url, post_id, ranking, reaction_id, comment_api_path)
+    max_parent_comment = 10
+    max_depth_comment = 10
+    scraper.crawl_comment(post_url, post_id, ranking, reaction_id, comment_api_path, max_comment=max_parent_comment, max_depth1_comment=max_depth_comment)
     
     # fanpage_url = "https://www.facebook.com/Theanh28"
     # before_time = "2025-5-31"

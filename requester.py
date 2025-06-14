@@ -73,11 +73,11 @@ class Requester():
             return None 
 
     @staticmethod
-    def _get_more_comments(headers: dict, post_id: str, get_post_api: str, end_cursor: str) -> requests.Response:
+    def _get_more_comments(headers: dict, post_id: str, ranking: Ranking, get_post_api: str, end_cursor: str) -> requests.Response:
         data = {
             "variables": str({"commentsAfterCount": -1,
                               "commentsAfterCursor": end_cursor, 
-                              "commentsIntentToken": "RANKED_UNFILTERED_CHRONOLOGICAL_REPLIES_INTENT_V1",
+                              "commentsIntentToken": ranking.value,
                               "scale": 1,
                               "id": post_id,
                               "__relay_internal__pv__IsWorkUserrelayprovider": "false"
