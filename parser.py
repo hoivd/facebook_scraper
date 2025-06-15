@@ -281,19 +281,20 @@ class Parser():
                 logger.warning("Không lấy được reactions trong comment")
             
             feedback_info = dict()
-        try:
-            feedback_info['total_count'] = edge['node']['feedback']['replies_fields']['total_count']
-            feedback_info['id'] = edge['node']['feedback']['id']
-            feedback_info['expansion_token'] = edge['node']['feedback']['expansion_info']['expansion_token']
-            feedback_info['comments'] = Parser.scraper_depth1_comments(headers=headers, feedback_id=feedback_info['id'], expansion_token=feedback_info['expansion_token'], \
-                                                                        reaction_id_info=reaction_id_info)
-            logger.debug(f"Lấy FEEDBACK_INFO cho parent comment thành công")
-        except Exception as e:
-            logger.warning(f"Không lấy được FEEDBACK_INFO cho parent comment {e}")
-        finally:
-            comment['feedback_info'] = feedback_info
+            
+            try:
+                feedback_info['total_count'] = edge['node']['feedback']['replies_fields']['total_count']
+                feedback_info['id'] = edge['node']['feedback']['id']
+                feedback_info['expansion_token'] = edge['node']['feedback']['expansion_info']['expansion_token']
+                feedback_info['comments'] = Parser.scraper_depth1_comments(headers=headers, feedback_id=feedback_info['id'], expansion_token=feedback_info['expansion_token'], \
+                                                                            reaction_id_info=reaction_id_info)
+                logger.debug(f"Lấy FEEDBACK_INFO cho parent comment thành công")
+            except Exception as e:
+                logger.warning(f"Không lấy được FEEDBACK_INFO cho parent comment {e}")
+            finally:
+                comment['feedback_info'] = feedback_info
 
-            comments.append(comment)
+                comments.append(comment)
 
         return comments
 

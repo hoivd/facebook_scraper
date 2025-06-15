@@ -198,14 +198,14 @@ class FacebookScraper():
 if __name__ == "__main__":
     scraper = FacebookScraper()
 
-    post_url = "https://www.facebook.com/Theanh28/posts/pfbid02s6nYu5teN3M5KyLuBZVrHGPyZrbxWSzSisV382h7bC7SdcKP4giHydTWKy63fhLLl"
-    post_id = "ZmVlZGJhY2s6MTAxMzkzNDcwMDkyMTYzMg==" 
+    post_url = "https://www.facebook.com/reel/1600885040608945"
+    post_id = "ZmVlZGJhY2s6MTAyMjg5NjU3MzM1ODc3OA==" 
     comment_api_path = "./api_info/comment_api.json"
-    ranking = Ranking.MOST_RELEVANT
+    ranking = Ranking.ALL_COMMENTS
     logger.debug(f"Ranking Filter: {ranking.value}")
     reaction_id  = Utils.load_json("./api_info/reaction_ids.json")
-    max_parent_comment = 10
-    max_depth_comment = 10
+    max_parent_comment = 20
+    max_depth_comment = 20
     scraper.crawl_comment(post_url, post_id, ranking, reaction_id, comment_api_path, max_comment=max_parent_comment, max_depth1_comment=max_depth_comment)
     
     # fanpage_url = "https://www.facebook.com/Theanh28"
