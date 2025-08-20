@@ -194,25 +194,27 @@ class FacebookScraper():
         except Exception as e:
             logger.error(f"Lỗi khi lấy post {e}")
             raise Exception(f"Lỗi khi lấy post {e}")
-    
-if __name__ == "__main__":
+
+def main():
     scraper = FacebookScraper()
 
-    post_url = "https://www.facebook.com/reel/1600885040608945"
-    post_id = "ZmVlZGJhY2s6MTAyMjg5NjU3MzM1ODc3OA==" 
-    comment_api_path = "./api_info/comment_api.json"
-    ranking = Ranking.ALL_COMMENTS
-    logger.debug(f"Ranking Filter: {ranking.value}")
-    reaction_id  = Utils.load_json("./api_info/reaction_ids.json")
-    max_parent_comment = 20
-    max_depth_comment = 20
-    scraper.crawl_comment(post_url, post_id, ranking, reaction_id, comment_api_path, max_comment=max_parent_comment, max_depth1_comment=max_depth_comment)
+    # post_url = "https://www.facebook.com/reel/1600885040608945"
+    # post_id = "ZmVlZGJhY2s6MTAyMjg5NjU3MzM1ODc3OA==" 
+    # comment_api_path = "./api_info/comment_api.json"
+    # ranking = Ranking.ALL_COMMENTS
+    # logger.debug(f"Ranking Filter: {ranking.value}")
+    # reaction_id  = Utils.load_json("./api_info/reaction_ids.json")
+    # max_parent_comment = 20
+    # max_depth_comment = 20
+    # scraper.crawl_comment(post_url, post_id, ranking, reaction_id, comment_api_path, max_comment=max_parent_comment, max_depth1_comment=max_depth_comment)
     
-    # fanpage_url = "https://www.facebook.com/Theanh28"
-    # before_time = "2025-5-31"
-    # ranking = Ranking.MOST_RELEVANT
-    # scraper.crawl_post(fanpage_url, max_post=200, ranking_comment=ranking, before_time=before_time )
+    fanpage_url = "https://www.facebook.com/groups/1605994656091242/"
+    before_time = "2025-8-20"
+    ranking = Ranking.MOST_RELEVANT
+    scraper.crawl_post(fanpage_url, max_post=200, ranking_comment=ranking, before_time=before_time)
 
 
     # Parser._get_reaction_id(fanpage_url)
- 
+    
+if __name__ == "__main__":
+    main()

@@ -1,6 +1,8 @@
 __pycache__
 test.py
-data
-facebook_urls
+/data/
+/facebook_urls/
 check_response.txt
+/facebook_urls/comments.json
+
 
